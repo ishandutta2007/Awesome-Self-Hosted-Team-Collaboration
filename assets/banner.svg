@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360" style="background:#0a0f1d;border-radius:14px;overflow:hidden;">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <!-- Title Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <!-- Dynamic Glow Gradients -->
+    <linearGradient id="glowCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="glowIndigo" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1" />
+    </pattern>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes pulseAura {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.65; transform: scale(1.1); }
+      }
+      @keyframes floatDot {
+        0% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+        50% { transform: translateY(-16px) translateX(12px); opacity: 0.75; }
+        100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 240; }
+        to { stroke-dashoffset: 0; }
+      }
+      .ambient-glow-1 {
+        animation: pulseAura 7s ease-in-out infinite;
+        transform-origin: 220px 100px;
+      }
+      .ambient-glow-2 {
+        animation: pulseAura 9s ease-in-out infinite reverse;
+        transform-origin: 980px 240px;
+      }
+      .particle-1 { animation: floatDot 6s ease-in-out infinite; }
+      .particle-2 { animation: floatDot 8s ease-in-out 1.5s infinite; }
+      .particle-3 { animation: floatDot 7s ease-in-out 3s infinite; }
+      .wave-line {
+        stroke-dasharray: 8 14;
+        animation: dashFlow 14s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Background Dynamic Glowing Auras -->
+  <circle cx="220" cy="110" r="190" fill="url(#glowCyan)" class="ambient-glow-1" />
+  <circle cx="980" cy="230" r="210" fill="url(#glowIndigo)" class="ambient-glow-2" />
+
+  <!-- Background Dynamic Mesh Network Lines -->
+  <g opacity="0.4">
+    <path class="wave-line" d="M -60,190 Q 240,60 600,190 T 1260,190" fill="none" stroke="#38bdf8" stroke-width="1.8" />
+    <path class="wave-line" d="M -60,230 Q 360,340 600,190 T 1260,130" fill="none" stroke="#a855f7" stroke-width="1.6" />
+  </g>
+
+  <!-- Floating Ambient Particles -->
+  <circle cx="150" cy="80" r="3" fill="#38bdf8" class="particle-1" />
+  <circle cx="270" cy="270" r="3.5" fill="#818cf8" class="particle-2" />
+  <circle cx="1040" cy="100" r="2.5" fill="#c084fc" class="particle-3" />
+  <circle cx="890" cy="300" r="3" fill="#38bdf8" class="particle-1" />
+  <circle cx="600" cy="45" r="2" fill="#e0e7ff" class="particle-2" />
+
+  <!-- Top Pill / Badge -->
+  <g transform="translate(600, 52)">
+    <rect x="-185" y="0" width="370" height="28" rx="14" fill="rgba(56, 189, 248, 0.08)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1" />
+    <circle cx="-162" cy="14" r="4" fill="#38bdf8">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="0" y="19" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" letter-spacing="1.5">DATA SOVEREIGNTY &amp; TEAM COLLABORATION</text>
+  </g>
+
+  <!-- Main Title (Foreground) -->
+  <text x="600" y="142" text-anchor="middle" fill="url(#titleGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="-0.5" filter="url(#glow)">Awesome Self-Hosted Team Collaboration</text>
+
+  <!-- Subtitle (Foreground) -->
+  <text x="600" y="184" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" letter-spacing="0.2">On-Premises Wikis • Real-Time &amp; Async Chat • Knowledge Bases • Document Platforms</text>
+
+  <!-- Bottom Visual Feature Badges/Cards (Below Title/Subtitle) -->
+  <g transform="translate(600, 245)">
+    <!-- Pill 1: Wikis -->
+    <g transform="translate(-360, 0)">
+      <rect x="0" y="0" width="165" height="42" rx="8" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1" />
+      <text x="82.5" y="26" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">📖 Wiki.js &amp; BookStack</text>
+    </g>
+
+    <!-- Pill 2: Team Chat -->
+    <g transform="translate(-180, 0)">
+      <rect x="0" y="0" width="165" height="42" rx="8" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(129, 140, 248, 0.25)" stroke-width="1" />
+      <text x="82.5" y="26" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">💬 Mattermost &amp; Zulip</text>
+    </g>
+
+    <!-- Pill 3: Enterprise File Sync -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="165" height="42" rx="8" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(192, 132, 252, 0.25)" stroke-width="1" />
+      <text x="82.5" y="26" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">☁️ Nextcloud &amp; XWiki</text>
+    </g>
+
+    <!-- Pill 4: Agile & Boards -->
+    <g transform="translate(180, 0)">
+      <rect x="0" y="0" width="165" height="42" rx="8" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1" />
+      <text x="82.5" y="26" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">📋 Plane &amp; Kanboard</text>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Line -->
+  <line x1="300" y1="320" x2="900" y2="320" stroke="url(#titleGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+</svg>

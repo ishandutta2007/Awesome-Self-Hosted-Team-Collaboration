@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Self-Hosted Team Collaboration Banner" width="100%">
+</p>
+
 # Awesome-Self-Hosted-Team-Collaboration
 
 ## Top Self-Hosted Team Collaboration Ecosystem
